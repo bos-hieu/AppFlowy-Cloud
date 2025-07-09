@@ -212,7 +212,16 @@ services:
 
   appflowy_web:
     restart: on-failure
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+      args:
+        AF_BASIC_AUTH_USER: ${AF_BASIC_AUTH_USER}
+        AF_BASIC_AUTH_PWD: ${AF_BASIC_AUTH_PWD}
     image: appflowyinc/appflowy_web:${APPFLOWY_WEB_VERSION:-latest}
+    environment:
+      - AF_BASIC_AUTH_USER=${AF_BASIC_AUTH_USER}
+      - AF_BASIC_AUTH_PWD=${AF_BASIC_AUTH_PWD}
     depends_on:
       - appflowy_cloud
 volumes:
