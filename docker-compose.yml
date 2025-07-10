@@ -11,6 +11,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
       - ./nginx/ssl/private_key.key:/etc/nginx/ssl/private_key.key
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
 
   # You do not need this if you have configured to use your own s3 file storage
   minio:
